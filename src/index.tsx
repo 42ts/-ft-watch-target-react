@@ -1,6 +1,6 @@
 import { usePersist } from '@-ft/use-persist';
 import { watchTarget, WatchTarget } from '@-ft/watch-target';
-import { useEffect, useState } from 'react';
+import { useEffect, useLayoutEffect, useState } from 'react';
 
 function getFromWatch<T>(watch: WatchTarget<T>['watch']): T {
   let result: T;
@@ -19,5 +19,11 @@ export function useWatchValue<T>(watch: WatchTarget<T>['watch']): T {
 export function useWatchTarget<T>(value: T): WatchTarget<T> {
   const resultPersist = usePersist(() => watchTarget(value));
   useEffect(() => resultPersist.current.set(value), [value]);
+  return resultPersist.current;
+}
+
+export function useLayoutWatchTarget<T>(value: T): WatchTarget<T> {
+  const resultPersist = usePersist(() => watchTarget(value));
+  useLayoutEffect(() => resultPersist.current.set(value), [value]);
   return resultPersist.current;
 }

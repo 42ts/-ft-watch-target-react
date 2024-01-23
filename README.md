@@ -17,7 +17,7 @@ function Portal({ children }) {
 
 function toComponent(childrenWatchTarget) {
   return function Component() {
-    return <>{useWatchValue(childrenWatchTarget)}</>;
+    return <>{useLayoutWatchValue(childrenWatchTarget)}</>;
   };
 }
 ```
