@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "@-ft/watch-target-react",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "React wrapper for util watchTarget",
   "types": "./index.d.ts",
   "main": "./index.js",

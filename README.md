@@ -7,9 +7,9 @@ React wrapper of util watchTarget
 ```jsx
 function Portal({ children }) {
   const { addComponent } = useContext(PortalContext);
-  const childrenWatchTarget = useWatchTarget(children);
+  const childrenWatchTarget = useLayoutWatchTarget(children);
   useEffect(
-    () => addComponent(toComponent(childrenWatchTarget)),
+    () => addComponent(toComponent(childrenWatchTarget.watch)),
     [addComponent]
   );
   return null;
@@ -17,7 +17,7 @@ function Portal({ children }) {
 
 function toComponent(childrenWatchTarget) {
   return function Component() {
-    return <>{useLayoutWatchValue(childrenWatchTarget)}</>;
+    return <>{useWatchValue(childrenWatchTarget)}</>;
   };
 }
 ```
